@@ -1,0 +1,41 @@
+{
+  "tests": [
+    {
+      "name": "Register new user",
+      "method": "POST",
+      "path": "/?action=register",
+      "body": {
+        "email": "test@example.com",
+        "password": "test123456",
+        "full_name": "Тест Тестов",
+        "phone": "+7 (999) 888-77-66"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "token": "string",
+        "user": {
+          "email": "test@example.com",
+          "full_name": "Тест Тестов"
+        }
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Login existing admin",
+      "method": "POST",
+      "path": "/?action=login",
+      "body": {
+        "email": "admin@transfer-abkhazia.ru",
+        "password": "admin123"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "token": "string",
+        "user": {
+          "role": "admin"
+        }
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

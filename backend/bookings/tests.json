@@ -1,0 +1,27 @@
+{
+  "tests": [
+    {
+      "name": "Create booking as guest",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "guest_name": "Иван Тестов",
+        "guest_phone": "+7 (999) 111-22-33",
+        "guest_email": "test@mail.ru",
+        "from_location": "Аэропорт Сочи",
+        "to_location": "Гагра",
+        "travel_date": "2025-02-15",
+        "travel_time": "10:00",
+        "passengers": 2,
+        "tariff_id": 1,
+        "payment_method": "prepay_50"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "booking_id": "number",
+        "status": "new"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
